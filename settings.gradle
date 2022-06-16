@@ -1,0 +1,35 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+
+    def navVersion = '2.4.2'
+    def hiltVersion = "2.41"
+
+    /*resolutionStrategy {
+        eachPlugin {
+            if( requested.id.id == 'dagger.hilt.android.plugin') {
+                useModule("com.google.dagger:hilt-android-gradle-plugin:${hiltVersion}")
+            }
+
+            if( requested.id.id == 'navigation-safe-args-gradle-plugin') {
+                useModule("androidx.navigation:navigation-safe-args-gradle-plugin:${navVersion}")
+            }
+        }
+    }*/
+}
+
+//classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+//classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "News App"
+include ':app'

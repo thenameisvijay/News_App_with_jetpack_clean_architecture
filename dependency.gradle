@@ -1,0 +1,93 @@
+ext {
+    ktxCoreVersion = '1.7.0'
+    appCompatVersion = '1.4.1'
+    materialVersion = '1.5.0'
+    constraintLayoutVersion = '2.1.3'
+    splashScreenVersion = '1.0.0-beta02'
+    junitVersion = '4.13.2'
+    junitExtVersion = '1.1.3'
+    espressoCoreVersion = '3.4.0'
+    retrofitVersion = '2.9.0'
+    okhttp3InterceptorVersion = '5.0.0-alpha.2'
+    chunkLibVersion = '1.1.0'
+    cardviewVersion = '1.0.0'
+    recyclerviewVersion = '1.2.1'
+    recyclerviewSelectionVersion = '1.1.0'
+    daggerVersion = '2.41'
+    pagingVersion = '3.1.1'
+    navVersion = '2.4.2'
+    roomVersion = '2.4.2'
+    picassoVersion = '2.8'
+    viewModelLiveDataVersion = '2.5.0-rc02'
+    coroutineVersion = '1.3.9'
+
+    ktxCoreDependency = "androidx.core:core-ktx:${ktxCoreVersion}"
+
+    appCompatDependency = "androidx.appcompat:appcompat:${appCompatVersion}"
+
+    materialDependency = "com.google.android.material:material:${materialVersion}"
+
+    constraintLayoutDependency = "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
+
+    splashScreenDependency = "androidx.core:core-splashscreen:${splashScreenVersion}"
+
+    junitDependency = "junit:junit:${junitVersion}"
+
+    junitExtDependency = "androidx.test.ext:junit:${junitExtVersion}"
+
+    espressoCoreDependency = "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
+
+    retrofitDependency = [
+            retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            moshi   : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}",
+    ]
+
+    okhttp3InterceptorDependency = "com.squareup.okhttp3:logging-interceptor:${okhttp3InterceptorVersion}"
+
+    chunkInterceptorDependency = [
+            chunkLib    : "com.readystatesoftware.chuck:library:${chunkLibVersion}",
+            chunkLibNoOp: "com.readystatesoftware.chuck:library-no-op:${chunkLibVersion}"
+    ]
+
+    cardviewDependency = "androidx.cardview:cardview:${cardviewVersion}"
+    recyclerviewDependency = "androidx.recyclerview:recyclerview:${recyclerviewVersion}"
+    recyclerviewSelectionDependency = "androidx.recyclerview:recyclerview-selection:${recyclerviewSelectionVersion}"
+
+    hiltDependency = [
+            hiltAndroid       : "com.google.dagger:hilt-android:${daggerVersion}",
+            hiltCompiler      : "com.google.dagger:hilt-android-compiler:${daggerVersion}",
+            hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${daggerVersion}"
+    ]
+
+    daggerDependency = [
+            dagger         : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            androidDagger  : "com.google.dagger:dagger-android-support:${daggerVersion}",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:${daggerVersion}"
+    ]
+
+    roomDependency = [
+            roomRuntime : "androidx.room:room-runtime:${roomVersion}",
+            roomCompiler: "androidx.room:room-compiler:${roomVersion}"
+    ]
+
+    navigationDependency = [
+            navFragment: "androidx.navigation:navigation-fragment-ktx:$navVersion",
+            navUi      : "androidx.navigation:navigation-ui-ktx:$navVersion"
+    ]
+
+    pagingDependency = "androidx.paging:paging-runtime:${pagingVersion}"
+
+    picassoDependency = "com.squareup.picasso:picasso:${picassoVersion}"
+
+    viewModelLiveDataDependency = [
+            viewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelLiveDataVersion",
+            liveData : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelLiveDataVersion",
+            lifecycle: "androidx.lifecycle:lifecycle-common-java8:$viewModelLiveDataVersion",
+    ]
+
+
+    coroutineDependency = [
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineVersion}"
+    ]
+}
