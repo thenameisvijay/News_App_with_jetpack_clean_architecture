@@ -16,7 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField("String","API_KEY",MY_KEY)
+        buildConfigField("String", "API_KEY", API_KEY)
         buildConfigField("String", "BASE_URL", BASE_URL)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -35,12 +35,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
+
+    implementation project(path: ':data')
+    implementation project(path: ':domain')
 
     implementation ktxCoreDependency
     implementation appCompatDependency
