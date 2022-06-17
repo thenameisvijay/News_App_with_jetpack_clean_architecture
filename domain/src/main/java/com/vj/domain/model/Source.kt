@@ -1,4 +1,4 @@
-package com.vj.data.model
+package com.vj.domain.model
 
 /**
  * Created by Vijay on 17/06/2022.

@@ -1,7 +1,7 @@
 package com.vj.data.api
 
 import com.vj.data.BuildConfig
-import com.vj.data.model.NewsResponse
+import com.vj.domain.model.NewsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

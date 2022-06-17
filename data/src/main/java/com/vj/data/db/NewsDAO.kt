@@ -1,7 +1,7 @@
 package com.vj.data.db
 
 import androidx.room.*
-import com.vj.data.model.News
+import com.vj.domain.model.News
 import kotlinx.coroutines.flow.Flow
 
 /**

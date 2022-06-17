@@ -1,7 +1,7 @@
 package com.vj.data.db
 
 import androidx.room.TypeConverter
-import com.vj.data.model.Source
+import com.vj.domain.model.Source
 
 /**
  * Created by Vijay on 17/06/2022.

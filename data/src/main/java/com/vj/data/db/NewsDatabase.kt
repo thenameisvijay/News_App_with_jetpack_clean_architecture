@@ -2,7 +2,7 @@ package com.vj.data.db
 
 import androidx.room.Database
 import androidx.room.TypeConverters
-import com.vj.data.model.News
+import com.vj.domain.model.News
 
 /**
  * Created by Vijay on 17/06/2022.
