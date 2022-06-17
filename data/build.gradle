@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -11,6 +12,9 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+
+        buildConfigField("String", "API_KEY", API_KEY)
+        buildConfigField("String", "BASE_URL", BASE_URL)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,4 +38,14 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
+
+    //Room
+    implementation roomDependency.roomRuntime
+    kapt roomDependency.roomCompiler
+
+    //Retrofit
+    implementation retrofitDependency.retrofit
+
+    //Coroutine
+    implementation coroutineDependency.coroutinesAndroid
 }

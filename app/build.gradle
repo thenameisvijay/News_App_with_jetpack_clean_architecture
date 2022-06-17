@@ -75,10 +75,6 @@ dependencies {
     implementation hiltDependency.hiltAndroid
     kapt hiltDependency.hiltCompiler
 
-    //Room
-    implementation roomDependency.roomRuntime
-    kapt roomDependency.roomCompiler
-
     //Picasso
     implementation picassoDependency
 
