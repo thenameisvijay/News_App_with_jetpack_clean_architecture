@@ -1,6 +1,7 @@
 package com.vj.data.db
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.vj.domain.model.News
 
@@ -15,6 +16,6 @@ import com.vj.domain.model.News
     exportSchema = false
 )
 @TypeConverters(SourceConvertor::class)
-abstract class NewsDatabase {
+abstract class NewsDatabase: RoomDatabase() {
     abstract fun getNewsDAO(): NewsDAO
 }

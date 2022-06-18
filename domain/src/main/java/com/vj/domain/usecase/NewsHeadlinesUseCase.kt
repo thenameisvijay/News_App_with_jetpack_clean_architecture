@@ -2,6 +2,7 @@ package com.vj.domain.usecase
 
 import com.vj.domain.model.NewsResponse
 import com.vj.domain.repository.NewsRepository
+import com.vj.domain.utils.ApiRequestStatus
 import retrofit2.Response
 
 /**
@@ -9,6 +10,6 @@ import retrofit2.Response
  * https://github.com/thenameisvijay
  */
 class NewsHeadlinesUseCase(private val repository: NewsRepository) {
-    suspend fun execute(country: String, page: Int): Response<NewsResponse> =
+    suspend fun execute(country: String, page: Int): ApiRequestStatus<NewsResponse> =
         repository.requestNews(country, page)
 }

@@ -1,4 +1,4 @@
-package com.vj.newsapp.utils
+package com.vj.domain.utils
 
 /**
  * Created by Vijay on 17/06/2022.
@@ -7,7 +7,7 @@ package com.vj.newsapp.utils
 sealed class ApiRequestStatus<out T> {
     class Success<out R>(val response: R) : ApiRequestStatus<R>()
     class Failed(
-        val message: String?,
-        val throwable: Throwable?
+        message: String?,
+        throwable: Throwable? = null
     ) : ApiRequestStatus<Nothing>()
 }

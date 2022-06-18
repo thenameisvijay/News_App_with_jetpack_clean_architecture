@@ -85,6 +85,10 @@ dependencies {
     //Pagination
     implementation pagingDependency
 
+    //Coroutine
+    implementation coroutineDependency.coroutinesAndroid
+    implementation coroutineDependency.coroutinesCore
+
     testImplementation junitDependency
     androidTestImplementation junitExtDependency
     androidTestImplementation espressoCoreDependency

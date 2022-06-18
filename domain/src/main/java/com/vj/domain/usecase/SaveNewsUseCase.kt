@@ -8,5 +8,5 @@ import com.vj.domain.repository.NewsRepository
  * https://github.com/thenameisvijay
  */
 class SaveNewsUseCase(private val newsRepository: NewsRepository) {
-    suspend fun execute(news: News) = newsRepository
+    suspend fun execute(news: News) = newsRepository.saveNews(news)
 }

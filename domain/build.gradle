@@ -48,4 +48,8 @@ dependencies {
     //Dagger-Hilt
     implementation hiltDependency.hiltAndroid
     kapt hiltDependency.hiltCompiler
+
+    //Room
+    implementation roomDependency.roomRuntime
+    kapt roomDependency.roomCompiler
 }
