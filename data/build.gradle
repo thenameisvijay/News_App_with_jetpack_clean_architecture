@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -50,4 +51,8 @@ dependencies {
 
     //Coroutine
     implementation coroutineDependency.coroutinesAndroid
+
+    //Dagger-Hilt
+    implementation hiltDependency.hiltAndroid
+    kapt hiltDependency.hiltCompiler
 }
