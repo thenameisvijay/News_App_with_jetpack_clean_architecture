@@ -7,14 +7,15 @@ import com.vj.domain.model.NewsResponse
 import com.vj.domain.repository.NewsRepository
 import com.vj.domain.utils.ApiRequestStatus
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 /**
  * Created by Vijay on 17/06/2022.
  * https://github.com/thenameisvijay
  */
-class NewsRepositoryImpl(
+internal class NewsRepositoryImpl @Inject constructor(
     private val newsRemoteDataSource: NewsRemoteDataSource,
-    private val newsLocalDataSource: NewsLocalDataSource
+//    private val newsLocalDataSource: NewsLocalDataSource
 ) : NewsRepository {
     override suspend fun requestNews(country: String, page: Int): ApiRequestStatus<NewsResponse> {
         val response = newsRemoteDataSource.getNewsFromRemote(country, page)
@@ -26,7 +27,7 @@ class NewsRepositoryImpl(
         return ApiRequestStatus.Failed(response.message())
     }
 
-    override suspend fun searchNews(
+    /*override suspend fun searchNews(
         country: String,
         searchQuery: String,
         page: Int
@@ -50,5 +51,5 @@ class NewsRepositoryImpl(
 
     override fun getSavedNews(): Flow<List<News>> {
         return newsLocalDataSource.getNewsFromDB()
-    }
+    }*/
 }

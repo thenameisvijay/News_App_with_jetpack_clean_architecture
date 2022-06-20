@@ -1,11 +1,12 @@
 package com.vj.domain.di
 
-import com.vj.domain.repository.NewsRepository
 import com.vj.domain.usecase.*
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 /**
@@ -14,30 +15,25 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-class UseCaseModule {
+abstract class UseCaseModule {
 
+    @Binds
     @Singleton
-    @Provides
-    fun provideNewsHeadLineUseCase(newsRepository: NewsRepository): NewsHeadlinesUseCase =
-        NewsHeadlinesUseCase(newsRepository)
+    internal abstract fun bindNewsHeadLineUseCase(sewsHeadlinesUseCaseImpl: NewsHeadlinesUseCaseImpl): NewsHeadlinesUseCase
 
+   /* @Binds
     @Singleton
-    @Provides
-    fun provideSearchNewsUseCase(newsRepository: NewsRepository): SearchNewsUseCase =
-        SearchNewsUseCase(newsRepository)
+    internal abstract fun bindSearchNewsUseCase(searchNewsUseCaseImpl: SearchNewsUseCaseImpl): SearchNewsUseCase
 
+    @Binds
     @Singleton
-    @Provides
-    fun provideSaveNewsUseCase(newsRepository: NewsRepository): SaveNewsUseCase =
-        SaveNewsUseCase(newsRepository)
+    internal abstract fun bindSaveNewsUseCase(saveNewsUseCaseImpl: SaveNewsUseCaseImpl): SaveNewsUseCase
 
+    @Binds
     @Singleton
-    @Provides
-    fun provideSavedNewsUseCase(newsRepository: NewsRepository): SavedNewsUseCase =
-        SavedNewsUseCase(newsRepository)
+    internal abstract fun bindSavedNewsUseCase(savedNewsUseCaseImpl: SavedNewsUseCaseImpl): SavedNewsUseCase
 
+    @Binds
     @Singleton
-    @Provides
-    fun provideDeleteNewsUseCase(newsRepository: NewsRepository): DeleteNewsUseCase =
-        DeleteNewsUseCase(newsRepository)
+    internal abstract fun bindDeleteNewsUseCase(seleteNewsUseCaseImpl: DeleteNewsUseCaseImpl): DeleteNewsUseCase*/
 }

@@ -23,9 +23,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetModule {
+object NetModule {
 
-    @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
@@ -34,7 +33,6 @@ class NetModule {
             .client(okHttpClient)
             .build()
 
-    @Singleton
     @Provides
     fun provideOkHttpClient(
         @ApplicationContext context: Context
@@ -61,15 +59,7 @@ class NetModule {
         return client.build()
     }
 
-    @Singleton
     @Provides
     fun provideAPIService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
-    /*@Singleton
-    @Provides
-    fun provideHasNetwork(@ApplicationContext context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
-        return activeNetwork != null && activeNetwork.isConnected
-    }*/
 }

@@ -12,8 +12,8 @@ import retrofit2.Response
  */
 interface NewsRepository {
     suspend fun requestNews(country: String, page: Int): ApiRequestStatus<NewsResponse>
-    suspend fun searchNews(country: String, searchQuery: String, page: Int): ApiRequestStatus<NewsResponse>
+    /*suspend fun searchNews(country: String, searchQuery: String, page: Int): ApiRequestStatus<NewsResponse>
     suspend fun saveNews(news: News)
     suspend fun deleteNews(news: News)
-    fun getSavedNews(): Flow<List<News>>
+    fun getSavedNews(): Flow<List<News>>*/
 }

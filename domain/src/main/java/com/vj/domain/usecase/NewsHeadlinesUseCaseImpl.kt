@@ -10,6 +10,7 @@ import javax.inject.Inject
  * Created by Vijay on 18/06/2022.
  * https://github.com/thenameisvijay
  */
-interface NewsHeadlinesUseCase {
-    suspend fun execute(country: String, page: Int): ApiRequestStatus<NewsResponse>
+internal class NewsHeadlinesUseCaseImpl @Inject constructor(private val repository: NewsRepository): NewsHeadlinesUseCase {
+    override suspend fun execute(country: String, page: Int): ApiRequestStatus<NewsResponse> =
+        repository.requestNews(country, page)
 }

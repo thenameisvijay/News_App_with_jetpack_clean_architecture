@@ -1,15 +1,14 @@
 package com.vj.newsapp.presentation.home.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.vj.domain.model.News
 import com.vj.domain.model.NewsResponse
+import com.vj.domain.repository.NewsRepository
 import com.vj.domain.usecase.*
 import com.vj.domain.utils.ApiRequestStatus
-import com.vj.newsapp.R
 import com.vj.newsapp.utils.ConnectionManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -24,12 +23,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val app: Application,
+//    private val app: Application,
     private val newsHeadlinesUseCase: NewsHeadlinesUseCase,
-    private val saveNewsUseCase: SaveNewsUseCase,
-    private val savedNewsUseCase: SavedNewsUseCase,
-    private val searchNewsUseCase: SearchNewsUseCase,
-    private val deleteNewsUseCase: DeleteNewsUseCase
+//    private val saveNewsUseCase: SaveNewsUseCase,
+//    private val savedNewsUseCase: SavedNewsUseCase,
+//    private val searchNewsUseCase: SearchNewsUseCase,
+//    private val deleteNewsUseCase: DeleteNewsUseCase
 ) : ViewModel() {
 
     @Inject
@@ -43,32 +42,39 @@ class HomeViewModel @Inject constructor(
         try {
             if (connectivityManager.isNetworkAvailable.value == true) {
                 val responseResult = newsHeadlinesUseCase.execute(country, page)
+//                val responseResult = newsRepository.requestNews(country, page)
                 newsHeadLines.postValue(responseResult)
             } else {
-                newsHeadLines.postValue(ApiRequestStatus.Failed(app.getString(R.string.no_internet)))
+                newsHeadLines.postValue(ApiRequestStatus.Failed("app.getString(R.string.no_internet)"))
             }
         } catch (e: Exception) {
             newsHeadLines.postValue(ApiRequestStatus.Failed(e.message.toString(), e))
         }
     }
 
-    fun saveNews(news: News) = viewModelScope.launch {
+    /*fun saveNews(news: News) = viewModelScope.launch {
         saveNewsUseCase.execute(news)
+//        newsRepository.saveNews(news)
     }
 
     fun savedNews() = liveData(Dispatchers.IO) {
         savedNewsUseCase.execute().collectLatest{
             emit(it)
         }
+
+        *//*newsRepository.getSavedNews().collectLatest {
+            emit(it)
+        }*//*
     }
 
     fun searchNews(country: String, searchQuery: String, page: Int) = viewModelScope.launch {
         try {
             if (connectivityManager.isNetworkAvailable.value == true) {
                 val responseResult = searchNewsUseCase.execute(country, searchQuery, page)
+//                val responseResult = newsRepository.searchNews(country, searchQuery, page)
                 searchNewsHeadLines.postValue(responseResult)
             } else {
-                searchNewsHeadLines.postValue(ApiRequestStatus.Failed(app.getString(R.string.no_internet)))
+                searchNewsHeadLines.postValue(ApiRequestStatus.Failed("app.getString(R.string.no_internet)"))
             }
         } catch (e: Exception) {
             searchNewsHeadLines.postValue(ApiRequestStatus.Failed(e.message.toString(), e))
@@ -77,5 +83,6 @@ class HomeViewModel @Inject constructor(
 
     fun deleteNews(news: News) = viewModelScope.launch {
         deleteNewsUseCase.execute(news)
-    }
+//        newsRepository.deleteNews(news)
+    }*/
 }

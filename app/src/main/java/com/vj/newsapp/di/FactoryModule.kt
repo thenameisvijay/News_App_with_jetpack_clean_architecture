@@ -9,8 +9,9 @@ import dagger.hilt.components.SingletonComponent
  * https://github.com/thenameisvijay
  */
 
+/*
 @Module
 @InstallIn(SingletonComponent::class)
 class FactoryModule {
 
-}
+}*/

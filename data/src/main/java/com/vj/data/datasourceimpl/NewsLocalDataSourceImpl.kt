@@ -4,12 +4,14 @@ import com.vj.data.datasource.NewsLocalDataSource
 import com.vj.data.db.NewsDAO
 import com.vj.domain.model.News
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 /**
  * Created by Vijay on 18/06/2022.
  * https://github.com/thenameisvijay
  */
-class NewsLocalDataSourceImpl(private val newsDAO: NewsDAO) : NewsLocalDataSource {
+class NewsLocalDataSourceImpl @Inject constructor(private val newsDAO: NewsDAO) : NewsLocalDataSource {
+
     override suspend fun saveNewsToDB(news: News) {
         newsDAO.insert(news)
     }

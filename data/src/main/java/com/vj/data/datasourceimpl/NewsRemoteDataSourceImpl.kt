@@ -4,12 +4,14 @@ import com.vj.data.api.ApiService
 import com.vj.data.datasource.NewsRemoteDataSource
 import com.vj.domain.model.NewsResponse
 import retrofit2.Response
+import javax.inject.Inject
 
 /**
  * Created by Vijay on 18/06/2022.
  * https://github.com/thenameisvijay
  */
-class NewsRemoteDataSourceImpl(private val apiService: ApiService) : NewsRemoteDataSource {
+class NewsRemoteDataSourceImpl @Inject constructor(private val apiService: ApiService) : NewsRemoteDataSource {
+
     override suspend fun getNewsFromRemote(country: String, page: Int): Response<NewsResponse> {
         return apiService.requestTopHeadlines(country, page)
     }
