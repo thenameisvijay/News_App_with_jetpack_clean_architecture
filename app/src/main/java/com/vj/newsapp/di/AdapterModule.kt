@@ -1,7 +1,7 @@
 package com.vj.newsapp.di
 
 import com.vj.newsapp.presentation.bookmark.adapter.BookmarkAdapter
-import com.vj.newsapp.presentation.home.adapter.HomeAdapter
+import com.vj.newsapp.presentation.home.adapter.NewsHomeAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,7 @@ class AdapterModule {
 
     @Singleton
     @Provides
-    fun provideHomeAdapter() = HomeAdapter()
+    fun provideHomeAdapter() = NewsHomeAdapter()
 
     @Singleton
     @Provides
