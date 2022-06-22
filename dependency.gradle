@@ -38,8 +38,9 @@ ext {
     espressoCoreDependency = "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
 
     retrofitDependency = [
-            retrofit: "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            moshi   : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}",
+            retrofit     : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            moshi        : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}",
+            gsonConvertor: "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
     ]
 
     okhttp3InterceptorDependency = "com.squareup.okhttp3:logging-interceptor:${okhttp3InterceptorVersion}"
@@ -89,6 +90,6 @@ ext {
 
     coroutineDependency = [
             coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineVersion}",
-            coroutinesCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutineVersion}"
+            coroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutineVersion}"
     ]
 }

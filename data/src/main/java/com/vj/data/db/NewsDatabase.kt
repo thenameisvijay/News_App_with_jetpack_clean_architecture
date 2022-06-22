@@ -3,7 +3,7 @@ package com.vj.data.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.vj.domain.model.News
+import com.vj.domain.model.Articles
 
 /**
  * Created by Vijay on 17/06/2022.
@@ -11,7 +11,7 @@ import com.vj.domain.model.News
  */
 
 @Database(
-    entities = [News::class],
+    entities = [Articles::class],
     version = 1,
     exportSchema = false
 )

@@ -1,6 +1,6 @@
 package com.vj.domain.usecase
 
-import com.vj.domain.model.News
+import com.vj.domain.model.Articles
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
  * https://github.com/thenameisvijay
  */
 interface SavedNewsUseCase {
-    fun execute(): Flow<List<News>>
+    fun execute(): Flow<List<Articles>>
 }

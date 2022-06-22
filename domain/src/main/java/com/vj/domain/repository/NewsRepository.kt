@@ -1,10 +1,10 @@
 package com.vj.domain.repository
 
-import com.vj.domain.model.News
+
+import com.vj.domain.model.Articles
 import com.vj.domain.model.NewsResponse
 import com.vj.domain.utils.ApiRequestStatus
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
 
 /**
  * Created by Vijay on 17/06/2022.
@@ -12,8 +12,13 @@ import retrofit2.Response
  */
 interface NewsRepository {
     suspend fun requestNews(country: String, page: Int): ApiRequestStatus<NewsResponse>
-    /*suspend fun searchNews(country: String, searchQuery: String, page: Int): ApiRequestStatus<NewsResponse>
-    suspend fun saveNews(news: News)
-    suspend fun deleteNews(news: News)
-    fun getSavedNews(): Flow<List<News>>*/
+    suspend fun searchNews(
+        country: String,
+        searchQuery: String,
+        page: Int
+    ): ApiRequestStatus<NewsResponse>
+
+    suspend fun saveNews(articles: Articles)
+    suspend fun deleteNews(articles: Articles)
+    fun getSavedNews(): Flow<List<Articles>>
 }

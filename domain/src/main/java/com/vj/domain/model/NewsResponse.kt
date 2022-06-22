@@ -5,7 +5,7 @@ package com.vj.domain.model
  * https://github.com/thenameisvijay
  */
 data class NewsResponse(
-    val articles: List<News>,
+    val articles: List<Articles>,
     val status: String,
     val totalResult: Int
 )

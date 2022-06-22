@@ -69,7 +69,7 @@ dependencies {
 
     //Retrofit
     implementation retrofitDependency.retrofit
-    implementation retrofitDependency.moshi
+    implementation retrofitDependency.gsonConvertor
     implementation okhttp3InterceptorDependency
 
     //Dagger-Hilt
@@ -95,4 +95,5 @@ dependencies {
     androidTestImplementation espressoCoreDependency
     // For Robolectric tests.
     testImplementation hiltDependency.hiltAndroidTesting
+
 }

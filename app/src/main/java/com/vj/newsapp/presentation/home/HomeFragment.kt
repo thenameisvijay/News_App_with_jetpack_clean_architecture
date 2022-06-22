@@ -5,31 +5,23 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.vj.domain.utils.ApiRequestStatus
 import com.vj.newsapp.R
 import com.vj.newsapp.presentation.home.viewmodel.HomeViewModel
-import com.vj.newsapp.utils.ConnectionManager
+import com.vj.newsapp.utils.NetworkHelper
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 private const val TAG = "HomeFragment"
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    @Inject
-    lateinit var connectivityManager: ConnectionManager
     private val country = "us"
     private val page = 1
-
     private val homeViewModel: HomeViewModel by activityViewModels()
-
-    override fun onStart() {
-        super.onStart()
-        connectivityManager.registerConnectionObserver(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,11 +37,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun callNewsHeadLines() {
-        homeViewModel.getNewsHeadLines(country, page)
-        homeViewModel.newsHeadLines.observe(viewLifecycleOwner) {result ->
-            when(result){
+        activity?.let {
+            if (NetworkHelper.hasInternet(it.applicationContext))
+                homeViewModel.getNewsHeadLines(country, page)
+            else
+                Toast.makeText(activity, getString(R.string.no_internet), Toast.LENGTH_SHORT).show()
+        }
+        homeViewModel.newsHeadLinesResponse.observe(viewLifecycleOwner) { result ->
+            when (result) {
                 is ApiRequestStatus.Success -> {
-                    Log.i(TAG, "Success: ${result.response}")
+                    Log.i(TAG, "Success --> ${result.response}")
                 }
                 is ApiRequestStatus.Failed -> {
                     Log.i(TAG, "Failed: ")
@@ -57,11 +54,6 @@ class HomeFragment : Fragment() {
             }
 
         }
-    }
-
-    override fun onStop() {
-        super.onStop()
-        connectivityManager.unregisterConnectionObserver(this)
     }
 
 }

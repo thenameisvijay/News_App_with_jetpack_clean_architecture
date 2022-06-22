@@ -2,7 +2,7 @@ package com.vj.data.datasourceimpl
 
 import com.vj.data.datasource.NewsLocalDataSource
 import com.vj.data.db.NewsDAO
-import com.vj.domain.model.News
+import com.vj.domain.model.Articles
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -12,15 +12,15 @@ import javax.inject.Inject
  */
 class NewsLocalDataSourceImpl @Inject constructor(private val newsDAO: NewsDAO) : NewsLocalDataSource {
 
-    override suspend fun saveNewsToDB(news: News) {
-        newsDAO.insert(news)
+    override suspend fun saveNewsToDB(articles: Articles) {
+        newsDAO.insert(articles)
     }
 
-    override fun getNewsFromDB(): Flow<List<News>> {
+    override fun getNewsFromDB(): Flow<List<Articles>> {
         return newsDAO.getAllNews()
     }
 
-    override suspend fun deleteNewsFromDB(news: News) {
-        newsDAO.delete(news)
+    override suspend fun deleteNewsFromDB(articles: Articles) {
+        newsDAO.delete(articles)
     }
 }

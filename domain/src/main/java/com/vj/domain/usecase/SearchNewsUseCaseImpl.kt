@@ -10,7 +10,7 @@ import javax.inject.Inject
  * Created by Vijay on 18/06/2022.
  * https://github.com/thenameisvijay
  */
-/*internal class SearchNewsUseCaseImpl @Inject constructor(private val repository: NewsRepository):SearchNewsUseCase {
+internal class SearchNewsUseCaseImpl @Inject constructor(private val repository: NewsRepository):SearchNewsUseCase {
     override suspend fun execute(country: String, searchQuery: String, page: Int): ApiRequestStatus<NewsResponse> =
         repository.searchNews(country, searchQuery, page)
-}*/
+}

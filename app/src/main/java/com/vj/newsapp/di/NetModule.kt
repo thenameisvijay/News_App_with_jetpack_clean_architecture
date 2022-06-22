@@ -1,8 +1,8 @@
 package com.vj.newsapp.di
 
 import android.content.Context
-import com.vj.newsapp.BuildConfig
 import com.vj.data.api.ApiService
+import com.vj.newsapp.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,9 +12,8 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 /**
  * Created by Vijay on 17/06/2022.
@@ -28,7 +27,9 @@ object NetModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(
+                GsonConverterFactory.create()
+            )
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .build()
@@ -61,5 +62,6 @@ object NetModule {
 
     @Provides
     fun provideAPIService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+
 
 }

@@ -3,10 +3,8 @@ package com.vj.domain.di
 import com.vj.domain.usecase.*
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 /**
@@ -21,7 +19,7 @@ abstract class UseCaseModule {
     @Singleton
     internal abstract fun bindNewsHeadLineUseCase(sewsHeadlinesUseCaseImpl: NewsHeadlinesUseCaseImpl): NewsHeadlinesUseCase
 
-   /* @Binds
+    @Binds
     @Singleton
     internal abstract fun bindSearchNewsUseCase(searchNewsUseCaseImpl: SearchNewsUseCaseImpl): SearchNewsUseCase
 
@@ -35,5 +33,5 @@ abstract class UseCaseModule {
 
     @Binds
     @Singleton
-    internal abstract fun bindDeleteNewsUseCase(seleteNewsUseCaseImpl: DeleteNewsUseCaseImpl): DeleteNewsUseCase*/
+    internal abstract fun bindDeleteNewsUseCase(seleteNewsUseCaseImpl: DeleteNewsUseCaseImpl): DeleteNewsUseCase
 }

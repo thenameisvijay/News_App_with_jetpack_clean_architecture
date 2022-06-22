@@ -2,7 +2,7 @@ package com.vj.data.repository
 
 import com.vj.data.datasource.NewsLocalDataSource
 import com.vj.data.datasource.NewsRemoteDataSource
-import com.vj.domain.model.News
+import com.vj.domain.model.Articles
 import com.vj.domain.model.NewsResponse
 import com.vj.domain.repository.NewsRepository
 import com.vj.domain.utils.ApiRequestStatus
@@ -15,7 +15,7 @@ import javax.inject.Inject
  */
 internal class NewsRepositoryImpl @Inject constructor(
     private val newsRemoteDataSource: NewsRemoteDataSource,
-//    private val newsLocalDataSource: NewsLocalDataSource
+    private val newsLocalDataSource: NewsLocalDataSource
 ) : NewsRepository {
     override suspend fun requestNews(country: String, page: Int): ApiRequestStatus<NewsResponse> {
         val response = newsRemoteDataSource.getNewsFromRemote(country, page)
@@ -27,7 +27,7 @@ internal class NewsRepositoryImpl @Inject constructor(
         return ApiRequestStatus.Failed(response.message())
     }
 
-    /*override suspend fun searchNews(
+    override suspend fun searchNews(
         country: String,
         searchQuery: String,
         page: Int
@@ -41,15 +41,15 @@ internal class NewsRepositoryImpl @Inject constructor(
         return ApiRequestStatus.Failed(response.message())
     }
 
-    override suspend fun saveNews(news: News) {
-        newsLocalDataSource.saveNewsToDB(news)
+    override suspend fun saveNews(articles: Articles) {
+        newsLocalDataSource.saveNewsToDB(articles)
     }
 
-    override suspend fun deleteNews(news: News) {
-        newsLocalDataSource.deleteNewsFromDB(news)
+    override suspend fun deleteNews(articles: Articles) {
+        newsLocalDataSource.deleteNewsFromDB(articles)
     }
 
-    override fun getSavedNews(): Flow<List<News>> {
+    override fun getSavedNews(): Flow<List<Articles>> {
         return newsLocalDataSource.getNewsFromDB()
-    }*/
+    }
 }

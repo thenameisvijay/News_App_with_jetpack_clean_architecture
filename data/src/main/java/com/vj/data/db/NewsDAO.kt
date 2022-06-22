@@ -1,7 +1,7 @@
 package com.vj.data.db
 
 import androidx.room.*
-import com.vj.domain.model.News
+import com.vj.domain.model.Articles
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface NewsDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(news: News)
+    suspend fun insert(articles: Articles)
 
     @Query("SELECT * FROM articles")
-    fun getAllNews(): Flow<List<News>>
+    fun getAllNews(): Flow<List<Articles>>
 
     @Delete
-    suspend fun delete(news: News)
+    suspend fun delete(articles: Articles)
 }
