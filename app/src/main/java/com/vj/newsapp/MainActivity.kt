@@ -6,6 +6,8 @@ import android.view.MenuInflater
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+const val SELECTED_NEWS = "selected_news"
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 

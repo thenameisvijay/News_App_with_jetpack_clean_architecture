@@ -1,17 +1,17 @@
 package com.vj.newsapp.presentation.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vj.domain.utils.ApiRequestStatus
 import com.vj.newsapp.R
+import com.vj.newsapp.SELECTED_NEWS
 import com.vj.newsapp.databinding.FragmentHomeBinding
 import com.vj.newsapp.presentation.home.adapter.NewsHomeAdapter
 import com.vj.newsapp.presentation.home.viewmodel.HomeViewModel
@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by activityViewModels()
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +54,12 @@ class HomeFragment : Fragment() {
             adapter = newsHomeAdapter
             layoutManager = LinearLayoutManager(activity)
         }
+        newsHomeAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putString(SELECTED_NEWS, it.url)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+        }
     }
 
     private fun callNewsHeadLines() {
@@ -66,18 +71,40 @@ class HomeFragment : Fragment() {
         }
         homeViewModel.newsHeadLinesResponse.observe(viewLifecycleOwner) { result ->
             when (result) {
+                is ApiRequestStatus.Loading -> showProgressbar()
                 is ApiRequestStatus.Success -> {
-                    Log.i(TAG, "Success --> ${result.response}")
+                    hideProgressbar(true)
                     binding.newsList.visibility = View.VISIBLE
                     newsHomeAdapter.diffUtils.submitList(result.response.articles)
 
                 }
                 is ApiRequestStatus.Failed -> {
-                    Log.i(TAG, "Failed: ")
+                    hideProgressbar(false)
+                    Toast.makeText(
+                        activity,
+                        getString(R.string.please_try_later),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
-
         }
     }
 
+    private fun showProgressbar() {
+        binding.contentLoadingProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressbar(isSuccess: Boolean) {
+        if (isSuccess)
+            binding.newsList.visibility = View.VISIBLE
+        else
+            binding.newsList.visibility = View.GONE
+
+        binding.contentLoadingProgressBar.visibility = View.GONE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fragmentHomeBinding = null
+    }
 }

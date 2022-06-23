@@ -3,8 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'androidx.navigation.safeargs.kotlin'
-//    id 'com.android.dynamic-feature'
+    id 'androidx.navigation.safeargs'
 }
 
 android {

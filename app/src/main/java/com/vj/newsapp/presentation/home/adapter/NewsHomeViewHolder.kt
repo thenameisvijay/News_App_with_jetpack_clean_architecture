@@ -3,6 +3,7 @@ package com.vj.newsapp.presentation.home.adapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.vj.domain.model.Articles
+import com.vj.newsapp.R
 import com.vj.newsapp.databinding.AdapterItemNewsBinding
 
 /**
@@ -11,16 +12,26 @@ import com.vj.newsapp.databinding.AdapterItemNewsBinding
  */
 class NewsHomeViewHolder constructor(private val binding: AdapterItemNewsBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(article: Articles?) {
+
+
+    fun bind(article: Articles?, onItemClickListener: ((Articles) -> Unit)?) {
         article?.let {
             Picasso.get()
                 .load(article.urlToImage)
                 .fit()
+                .placeholder(R.drawable.broken_image)
                 .into(binding.newsIv)
 
             binding.newsTitleTv.text = article.title
-//            binding.authorTv.text = article.author
             binding.publishDateTv.text = article.publishedAt
         }
+
+        binding.root.setOnClickListener {
+            onItemClickListener?.let {
+                article?.let { item -> it(item) }
+            }
+        }
     }
+
+
 }

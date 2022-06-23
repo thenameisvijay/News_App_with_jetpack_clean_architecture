@@ -33,6 +33,7 @@ class HomeViewModel @Inject constructor(
     val searchNewsHeadLines: MutableLiveData<ApiRequestStatus<NewsResponse>> = MutableLiveData()
 
     fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
+        _response.postValue(ApiRequestStatus.Loading)
         try {
             val responseResult = newsHeadlinesUseCase.execute(country, page)
             _response.postValue(responseResult)
@@ -43,7 +44,6 @@ class HomeViewModel @Inject constructor(
 
     fun saveNews(articles: Articles) = viewModelScope.launch {
         saveNewsUseCase.execute(articles)
-//        newsRepository.saveNews(news)
     }
 
     fun savedNews() = liveData(Dispatchers.IO) {
@@ -63,6 +63,5 @@ class HomeViewModel @Inject constructor(
 
     fun deleteNews(articles: Articles) = viewModelScope.launch {
         deleteNewsUseCase.execute(articles)
-//        newsRepository.deleteNews(news)
     }
 }

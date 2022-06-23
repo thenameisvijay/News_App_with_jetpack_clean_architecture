@@ -10,4 +10,6 @@ sealed class ApiRequestStatus<out T> {
         message: String?,
         throwable: Throwable? = null
     ) : ApiRequestStatus<Nothing>()
+
+    object Loading: ApiRequestStatus<Nothing>()
 }
