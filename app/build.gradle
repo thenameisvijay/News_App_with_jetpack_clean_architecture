@@ -92,7 +92,16 @@ dependencies {
     testImplementation junitDependency
     androidTestImplementation junitExtDependency
     androidTestImplementation espressoCoreDependency
+
     // For Robolectric tests.
     testImplementation hiltDependency.hiltAndroidTesting
+    kaptTest hiltDependency.hiltCompiler
 
+    // For instrumented test.
+    androidTestImplementation hiltDependency.hiltAndroidTesting
+    kaptAndroidTest hiltDependency.hiltCompiler
+
+    // Mockito
+    testImplementation mockitoDependency.mockitoCore
+    testImplementation mockitoDependency.mockitoInline
 }

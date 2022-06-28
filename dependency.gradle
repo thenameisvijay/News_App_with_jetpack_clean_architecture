@@ -20,6 +20,8 @@ ext {
     picassoVersion = '2.8'
     viewModelLiveDataVersion = '2.5.0-rc02'
     coroutineVersion = '1.6.1'
+    mockitoCoreVersion = '3.11.0'
+    mockitoInlineVersion = '2.19.0'
 
     ktxCoreDependency = "androidx.core:core-ktx:${ktxCoreVersion}"
 
@@ -87,9 +89,13 @@ ext {
             lifecycle: "androidx.lifecycle:lifecycle-common-java8:$viewModelLiveDataVersion",
     ]
 
-
     coroutineDependency = [
             coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineVersion}",
             coroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutineVersion}"
+    ]
+
+    mockitoDependency = [
+            mockitoCore: "org.mockito:mockito-core:${mockitoCoreVersion}",
+            mockitoInline: "org.mockito:mockito-inline:${mockitoInlineVersion}"
     ]
 }
